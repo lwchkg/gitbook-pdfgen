@@ -1,13 +1,14 @@
 {
   "name": "gitbook-pdfgen",
-  "version": "0.0.1",
+  "version": "0.0.2-0",
   "description": "PDF generator(s) for GitBook. Currently there is only one generator using wkhtmltopdf.",
   "main": "gen_pdf_wk.js",
-  "bin": { "gitbook-pdfgen" : "gen_pdf_wk.js" },
-  "repository" :
-  {
-    "type" : "git", 
-    "url" : "https://github.com/lwchkg/gitbook-pdfgen.git"
+  "bin": {
+    "gitbook-pdfgen": "gen_pdf_wk.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lwchkg/gitbook-pdfgen.git"
   },
   "dependencies": {
     "commander": "^2.9.0",
