@@ -1,6 +1,6 @@
 {
   "name": "gitbook-pdfgen",
-  "version": "0.0.2-0",
+  "version": "0.0.3-0",
   "description": "PDF generator(s) for GitBook. Currently there is only one generator using wkhtmltopdf.",
   "main": "gen_pdf_wk.js",
   "bin": {
