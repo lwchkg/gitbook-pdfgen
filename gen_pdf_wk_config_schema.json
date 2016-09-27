@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://gitbook.com/schemas/book.json",
+  "title": "GitBook Configuration",
+  "type": "object",
+  "properties": {
+    "root": {
+      "type": "string",
+      "title": "Path of the root folder containing the book's content",
+      "default": "."
+    },
+    "title": {
+      "type": "string",
+      "title": "Title of the book, default is extracted from README"
+    },
+    "author": {
+      "type": "string",
+      "title": "Name of the author"
+    },
+    "direction": {
+      "type": "string",
+      "enum": ["ltr", "rtl"],
+      "title": "Direction of texts, default is detected in the pages"
+    },
+    "variables": {
+      "type": "object",
+      "title": "Templating context variables"
+    },
+    "structure": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "default": "SUMMARY.md",
+          "title": "File to use as table of contents",
+          "$ref": "#/definitions/filename"
+        }
+      }
+    },
+    "wkhtmltopdf": {
+      "type": "object",
+      "title": "wkhtmltopdf specific configurations",
+      "properties": {
+        "paperSize": {
+          "type": "string",
+          "enum": ["a0", "a1", "a2", "a3", "a4", "a5", "a6", "b0", "b1", "b2", "b3", "b4", "b5", "b6", "legal", "letter"],
+          "default": "a4",
+          "title": "Paper size for the PDF",
+          "description": "Known issue: only the list from GitBook is used. This is more restrictive than what wkhtmltopdf offers."
+        },
+        "margin": {
+          "type": "object",
+          "properties": {
+            "right": {
+              "title": "Right Margin",
+              "$ref": "#/definitions/spacing"
+            },
+            "left": {
+              "title": "Left Margin",
+              "$ref": "#/definitions/spacing"
+            },
+            "top": {
+              "title": "Top Margin",
+              "$ref": "#/definitions/spacing"
+            },
+            "bottom": {
+              "title": "Bottom Margin",
+              "$ref": "#/definitions/spacing"
+            }
+          }
+        },
+
+        "header": {
+          "title": "Specify the header for every page.",
+          "$ref": "#/definitions/headerOrFooterStyle"
+        },
+
+        "footer": {
+          "title": "Specify the footer for every page.",
+          "$ref": "#/definitions/headerOrFooterStyle"
+        },
+
+        "tocXsl": {
+          "title": "Specify the XSL stylesheet of the content page.",
+          "description": "In the XSL stylesheet, %url_current_dir% will be replaced by the URL of the temporary directory. This is done because it is impossible to refer to the directory of the XSL file.",
+          "$ref": "#/definitions/filepath"
+        },
+
+        "assets": {
+          "type": "array",
+          "title": "Assets to be copied to the temporary directory.",
+          "items": { "$ref": "#/definitions/filepath" },
+          "uniqueItems": true
+        }
+      }
+    }
+  },
+  "required": [],
+  "definitions": {
+    "filename": {
+      "description": "Filename rule, copied from GitBook. Known issues: only a subset of all possible characters can be used.",
+      "type": "string",
+      "pattern": "^[a-zA-Z-._\\d,\\s]+$"
+    },
+    "filepath": {
+      "type": "string",
+      "pattern": "^([a-zA-Z-._\\d,\\s]+)(/[a-zA-Z-._\\d,\\s]+)*$"
+    },
+    "headerOrFooterStyle": {
+      "type": "object",
+      "properties": {
+        "contentHtml": {
+          "title": "The content of the header or footer (in HTML)",
+          "description": "The content is an HTML file, which will be copied, with pathnames removed, into the temporary directory.",
+          "$ref": "#/definitions/filepath"
+        },
+        "spacing": {
+          "title": "The space between the footer and the main content.",
+          "$ref": "#/definitions/spacing",
+          "default": "5"
+        }
+      }
+    },
+    "spacing": {
+      "type": "string",
+      "pattern": "^[\\d]+(\\.[\\d]+)?(mm|cm|in|px|pt)?",
+      "default": "25.4"
+    }
+  }
+}

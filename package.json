@@ -1,0 +1,32 @@
+{
+  "name": "gitbook-pdfgen",
+  "version": "0.0.1",
+  "description": "PDF generator(s) for GitBook. Currently there is only one generator using wkhtmltopdf.",
+  "main": "gen_pdf_wk.js",
+  "bin": { "gitbook-pdfgen" : "gen_pdf_wk.js" },
+  "repository" :
+  {
+    "type" : "git", 
+    "url" : "https://github.com/lwchkg/gitbook-pdfgen.git"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "file-url": "^1.1.0",
+    "fs-promise": "^0.5.0",
+    "htmltidy2": "^0.1.4",
+    "json-schema-defaults": "^0.1.1",
+    "jsonschema": "^1.1.0",
+    "less": "^2.5.3",
+    "merge": "^1.2.0",
+    "selectn": "^1.1.1",
+    "stream-to-promise": "^2.2.0",
+    "xpath": "^0.0.23",
+    "xmldom": "^0.1.22"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "WC Leung",
+  "license": "Apache-2.0"
+}
