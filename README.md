@@ -6,8 +6,9 @@ Before the documentation is done, you may check the discussion at https://github
 ## Installation
 
 1. `npm install -g gitbook-pdfgen`
-2. Install wkhtmltopdf and add wkhtmltopdf to path.
-3. Download the sample project at https://github.com/GitbookIO/gitbook/issues/1470
+2. Install `wkhtmltopdf` and add `wkhtmltopdf` to path.
+3. Download the sample project at https://github.com/GitbookIO/gitbook/issues/1470 to project path
+4. `cd [project path]` && `npm install` && `gitbook install`
 4. run `gitbook-pdfgen` at the project path, which contains book.json. The pdf generated is book_wk.pdf
 5. run `gitbook-pdfgen --help` for help of the command line.
 6. Modify the book.
@@ -15,7 +16,7 @@ Before the documentation is done, you may check the discussion at https://github
 ## Configuration
 
 * Do the configuration in book.json of the book.
-* Check gen_pdf_wk_config_schema.json in the npm package for details. (Sorry I cannot pretty print the schema yet.)
+* Check `gen_pdf_wk_config_schema.json` in the npm package for details. (Sorry I cannot pretty print the schema yet.)
 * Check the sample project and wkhtmltopdf help for how to modify the TOC, header and footer.
 
 ## Known issues
