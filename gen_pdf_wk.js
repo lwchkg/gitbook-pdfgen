@@ -45,9 +45,27 @@ class GitbookToWkhtmltopdf {
     return this._assetMap.get(getAssetSrcPath(assetName));
   }
 
+  _getStdinArgs(args) {
+    let ret = '';
+    for (const arg of args) {
+      ret = ret + arg.toString().replace(/[ \t\n\r\\]/g, '\\$&');
+      ret = ret + ' ';
+    }
+    return ret;
+  }
+
   _processNodes(select, nodes, level) {
     for (const node of nodes) {
-      const url = select('./html:span/html:a/@href', node)[0].value;
+      let url;
+      try {
+        url = path.join(
+                  cmdOptions.ebookDirectory,
+                  decodeURIComponent(
+                      select('./html:span/html:a/@href', node)[0].value));
+      } catch(e) {
+        // Multipart titles - skip this item until we have a better handling method.
+        continue;
+      }
       const title =
           select('normalize-space(./html:span/html:a/text())', node).toString();
       this._docList.push({'url' : url, 'title' : title, 'level' : level});
@@ -70,11 +88,12 @@ class GitbookToWkhtmltopdf {
          '--javascript-delay', cmdOptions.javascriptDelay];
 
     if (config.cover) {
-      args.push('cover', path.relative(cmdOptions.ebookDirectory,
-                                       this._getAssetDescPath('cover')),
+      args.push('cover',
+                getQTCompatibleFileUrl(this._getAssetDescPath('cover')),
                 '--exclude-from-outline', ...argsForAllPages);
     }
 
+    // Can't use file:// URL in XSL stylesheet. The reason is unknown.
     args.push('toc', ...argsForAllPages);
     if (config.tocXsl) {
       args.push('--xsl-style-sheet',
@@ -95,18 +114,20 @@ class GitbookToWkhtmltopdf {
     Object.freeze(argsForNormalPages);
 
     for (const doc of this._docList)
-      args.push(path.normalize(doc.url), ...argsForNormalPages);
+      args.push(getQTCompatibleFileUrl(doc.url), ...argsForNormalPages);
 
     args.push(path.relative(cmdOptions.ebookDirectory, cmdOptions.outputFile));
 
     const cmd_options = {
       cwd: cmdOptions.ebookDirectory,
-      stdio: 'inherit',
+      input: this._getStdinArgs(args),
+      stdio: ['pipe', process.stdout, process.stderr],
       timeout: 200000  // wkhtmltopdf can infinitely loop in some cases.
     };
-
     console.log('Launching wkhtmltopdf:');
-    childProcess.spawnSync('wkhtmltopdf', args, cmd_options);
+    if (cmdOptions.debug)
+      console.log('[debug] Options for wkhtmltopdf: %O', cmd_options);
+    childProcess.spawnSync('wkhtmltopdf', ['--read-args-from-stdin'], cmd_options);
   }
 
   process(xml) {
@@ -220,6 +241,7 @@ cmdOptions
             'Allow the specified number of milliseconds for the javascript to finish. [default: 1000]',
             filterInt, 1000)
     .option('-n, --no-build', 'Do not rebuild tempororary files.')
+    .option('--debug', 'Print debugging information.')
     .parse(process.argv);
 
 let config;
