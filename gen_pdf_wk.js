@@ -297,7 +297,9 @@ cmdOptions
   .version("0.0.1")
   .option(
     "-D, --ebook-directory <path>",
-    `Set the temp directory of the generated ebook. [default: ${ebookDir}] Caution: errors will happen if a delimeter (space, comma, semicolon, equal) is present in this option.`,
+    `Set the temp directory of the generated ebook. [default: ${
+      ebookDir
+    }] Caution: errors will happen if a delimeter (space, comma, semicolon, equal) is present in this option.`,
     ebookDir
   )
   .option(
