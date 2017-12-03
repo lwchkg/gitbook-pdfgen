@@ -1,0 +1,207 @@
+{
+  "rules": {
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "no-tabs": [
+      "error"
+    ],
+    "no-console": 0,
+    "no-unsafe-negation": [
+      "error"
+    ],
+    "valid-jsdoc": [
+      "error",
+      {
+        "requireReturn": false,
+        "requireParamDescription": false,
+        "requireReturnDescription": false
+      }
+    ],
+    "curly": [
+      "error",
+      "all"
+    ],
+    "dot-notation": [
+      "error"
+    ],
+    "eqeqeq": [
+      "error"
+    ],
+    "no-else-return": [
+      "error"
+    ],
+    "no-eval": [
+      "error"
+    ],
+    "no-extra-bind": [
+      "error"
+    ],
+    "no-implicit-globals": [
+      "error"
+    ],
+    "no-implied-eval": [
+      "error"
+    ],
+    "no-invalid-this": [
+      "error"
+    ],
+    "no-lone-blocks": [
+      "error"
+    ],
+    "no-loop-func": [
+      "error"
+    ],
+    "no-magic-numbers": [
+      "error",
+      {
+        "ignore": [
+          0,
+          1,
+          2
+        ],
+        "ignoreArrayIndexes": true
+      }
+    ],
+    "no-new-func": [
+      "error"
+    ],
+    "no-new-wrappers": [
+      "error"
+    ],
+    "no-octal-escape": [
+      "error"
+    ],
+    "no-sequences": [
+      "error"
+    ],
+    "no-throw-literal": [
+      "error"
+    ],
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ],
+    "no-useless-escape": [
+      "error"
+    ],
+    "no-useless-return": [
+      "error"
+    ],
+    "no-void": [
+      "error"
+    ],
+    "no-warning-comments": [
+      "warn"
+    ],
+    "no-with": [
+      "error"
+    ],
+    "radix": [
+      "error",
+      "as-needed"
+    ],
+    "yoda": [
+      "error",
+      "never",
+      {
+        "onlyEquality": true
+      }
+    ],
+    "strict": [
+      "error"
+    ],
+    "no-process-exit": [
+      "error"
+    ],
+    "no-use-before-define": [
+      "error"
+    ],
+    "camelcase": [
+      "error"
+    ],
+    "lines-around-directive": [
+      "error"
+    ],
+    "max-statements-per-line": [
+      "error"
+    ],
+    "no-array-constructor": [
+      "error"
+    ],
+    "no-lonely-if": [
+      "error"
+    ],
+    "no-new-object": [
+      "error"
+    ],
+    "no-unneeded-ternary": [
+      "error"
+    ],
+    "operator-assignment": [
+      "error"
+    ],
+    "require-jsdoc": [
+      "off"
+    ],
+    "spaced-comment": [
+      "error"
+    ],
+    "arrow-body-style": [
+      "error"
+    ],
+    "no-class-assign": [
+      "error"
+    ],
+    "no-confusing-arrow": [
+      "error"
+    ],
+    "no-useless-computed-key": [
+      "error"
+    ],
+    "no-var": [
+      "error"
+    ],
+    "prefer-arrow-callback": [
+      "error"
+    ],
+    "prefer-const": [
+      "error"
+    ],
+    "prefer-numeric-literals": [
+      "error"
+    ],
+    "prefer-rest-params": [
+      "error"
+    ],
+    "prefer-spread": [
+      "error"
+    ],
+    "prettier\/prettier": [
+      "error"
+    ],
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "prettier"
+  ],
+  "root": true,
+  "plugins": [
+    "prettier"
+  ]
+}

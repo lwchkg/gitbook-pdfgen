@@ -1,0 +1,6 @@
+babel-out/*
+coverage/*
+node_modules/*
+flow-typed/*
+
+test/code-snippets/*
