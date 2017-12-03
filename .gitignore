@@ -3,6 +3,12 @@ logs
 *.log
 npm-debug.log*
 
+# Package locks (because they doesn't work)
+# Uncomment when npm is found not to create havoc on bad locks.
+package-lock.json
+# Uncomment when yarn create bin links.
+yarn.lock
+
 # Runtime data
 pids
 *.pid

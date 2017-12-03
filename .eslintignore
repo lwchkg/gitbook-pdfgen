@@ -1,0 +1,4 @@
+babel-out/*
+coverage/*
+node_modules/*
+flow-typed/*

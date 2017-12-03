@@ -21,12 +21,21 @@
     "merge": "^1.2.0",
     "selectn": "^1.1.1",
     "stream-to-promise": "^2.2.0",
-    "xpath": "^0.0.23",
-    "xmldom": "^0.1.22"
+    "xmldom": "^0.1.22",
+    "xpath": "^0.0.23"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cross-env": "^5.0.4",
+    "eslint": "^4.4.1",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "prettier": "^1.5.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eslint": "eslint",
+    "eslint-check": "eslint --print-config .eslintrc | eslint-config-prettier-check",
+    "eslint-run": "eslint .",
+    "test": "yarn run eslint-run"
   },
   "author": "WC Leung",
   "license": "Apache-2.0"
